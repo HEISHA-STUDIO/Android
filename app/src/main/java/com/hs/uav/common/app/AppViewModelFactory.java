@@ -1,0 +1,61 @@
+package com.hs.uav.common.app;
+
+import android.annotation.SuppressLint;
+import android.app.Application;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.VisibleForTesting;
+import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
+
+import com.hs.uav.logic.data.repositor.AASDataRepository;
+import com.hs.uav.moudle.MainViewModel;
+import com.hs.uav.moudle.aas.model.SplashVM;
+import com.hs.uav.moudle.main.model.GaoMapMainVM;
+import com.hs.uav.moudle.main.model.VideoMainVM;
+
+/**
+ * 应用viewModel初始化工厂
+ */
+public class AppViewModelFactory extends ViewModelProvider.NewInstanceFactory {
+    @SuppressLint("StaticFieldLeak")
+    private static volatile AppViewModelFactory INSTANCE;
+    private final Application mApplication;
+    private final AASDataRepository mRepository;
+
+    public static AppViewModelFactory getInstance(Application application) {
+        if (INSTANCE == null) {
+            synchronized (AppViewModelFactory.class) {
+                if (INSTANCE == null) {
+                    INSTANCE = new AppViewModelFactory(application, Injection.aasDataRe());
+                }
+            }
+        }
+        return INSTANCE;
+    }
+
+    @VisibleForTesting
+    public static void destroyInstance() {
+        INSTANCE = null;
+    }
+
+    private AppViewModelFactory(Application application, AASDataRepository repository) {
+        this.mApplication = application;
+        this.mRepository = repository;
+    }
+
+    @NonNull
+    @Override
+    public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
+        if (modelClass.isAssignableFrom(MainViewModel.class)) {
+            return (T) new MainViewModel(mApplication, mRepository);
+        } else if (modelClass.isAssignableFrom(SplashVM.class)) {
+            return (T) new SplashVM(mApplication, mRepository);
+        } else if (modelClass.isAssignableFrom(VideoMainVM.class)) {
+            return (T) new VideoMainVM(mApplication, mRepository);
+        } else if (modelClass.isAssignableFrom(GaoMapMainVM.class)) {
+            return (T) new GaoMapMainVM(mApplication, mRepository);
+        }
+        throw new IllegalArgumentException("Unknown ViewModel class: " + modelClass.getName());
+    }
+}

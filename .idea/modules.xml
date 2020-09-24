@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Android-D.Command.iml" filepath="$PROJECT_DIR$/.idea/modules/Android-D.Command.iml" group="Android-D.Command" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/HS-UAV.iml" filepath="$PROJECT_DIR$/.idea/modules/HS-UAV.iml" group="HS-UAV" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MallCore/MallCore.iml" filepath="$PROJECT_DIR$/.idea/modules/MallCore/MallCore.iml" group="Android-D.Command/MallCore" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/app.iml" group="Android-D.Command/app" />
+    </modules>
+  </component>
+</project>

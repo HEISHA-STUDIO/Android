@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="colorPrimary">#434343</color>
+    <color name="colorPrimaryDark">#434343</color>
+    <color name="colorAccent">#434343</color>
+
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="orange2">#ffbd21</color>
+    <color name="black_line">#08ffffff</color>
+    <color name="black_line2">#15ffffff</color>
+    <color name="white_50_alp">#50ffffff</color>
+    <color name="white_08_alp">#08ffffff</color>
+    <color name="white_32_alp">#32ffffff</color>
+
+    <color name="text_light_gray">#F6F7F7</color>
+    <color name="text_gray">#707B8E</color>
+    <color name="text_dark_gray">#7A8598</color>
+    <color name="btn_normal_bg">#171C2C</color>
+    <color name="text_hint_color">#707B8E</color>
+    <color name="line_view_bg">#08ffffff</color>
+    <color name="item_menu_bg">#171C2C</color>
+    <color name="item_view_bg">#0C1122</color>
+    <!--zxing-->
+    <color name="contents_text">#000000</color>
+    <color name="encode_view">#ffffff</color>
+    <color name="possible_result_points">#ffbd21</color>
+    <color name="result_minor_text">#c0c0c0</color>
+    <color name="result_points">#99cc00</color>
+    <color name="result_text">#ffffff</color>
+    <color name="result_view">#000000</color>
+    <color name="status_text">#ffffff</color>
+    <color name="viewfinder_mask">#50000000</color>
+    <color name="react">#ffffff</color>
+    <color name="scanLineColor">#ffffff</color>
+    <color name="defaultColor">#ffffff</color>
+
+    <color name="gray">#cccccc</color>
+    <color name="gray_ea">#eaeaea</color>
+    <color name="yellow">#FFFF00</color>
+    <color name="green">#12B370</color>
+    <color name="blue">#8AADCF</color>
+    <color name="title_span_blue">#0066FF</color>
+    <color name="orange">#FFAA00</color>
+    <color name="title_hint_b3">#B3B3B3</color>
+    <color name="red">#E65C5C</color>
+    <color name="red2">#FF6969</color>
+    <color name="red_1a">#1aFA417B</color>
+
+    <array name="in_colors_light">
+        <item>#4B03A9F4</item>
+        <item>#3303A9F4</item>
+        <item>#1903A9F4</item>
+    </array>
+
+</resources>

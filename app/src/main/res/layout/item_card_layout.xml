@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/card_ll"
+        android:layout_width="250dp"
+        android:layout_height="300dp"
+        android:background="@mipmap/ic_card_small"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/add_ll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/add_device_iv"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_marginBottom="20dp"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/ic_btn_adddnest_small" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/detail_ll"
+            android:layout_width="200dp"
+            android:layout_height="220dp"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/title_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="70dp"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/name_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/title_tv"
+                android:layout_marginTop="7dp"
+                android:gravity="center"
+                android:textColor="#D5DEE6"
+                android:textSize="15sp" />
+
+            <ImageView
+                android:id="@+id/del_iv"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginRight="25dp"
+                android:layout_marginBottom="25dp"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/icon_delete" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

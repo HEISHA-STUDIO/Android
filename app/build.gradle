@@ -1,0 +1,112 @@
+apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao'
+android {
+    compileSdkVersion 29
+    defaultConfig {
+        applicationId rootProject.ext.android.applicationId
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+        ndk {
+            abiFilters 'armeabi-v7a'
+        }
+        packagingOptions {
+            exclude 'META-INF/rxjava.properties'
+        }
+    }
+    signingConfigs {
+        release {
+            storeFile file("./heisha_uav_android")
+            keyAlias "bshark"
+            keyPassword "bshark"
+            storePassword "bshark"
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled false
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    dataBinding {
+        enabled true
+    }
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/ECLIPSE_.SF'
+        exclude 'META-INF/ECLIPSE_.RSA'
+    }
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
+    sourceSets.main {
+        jniLibs.srcDirs = ['libs']
+    }
+    greendao {
+        // 指定数据库schema版本号，迁移等操作会用到
+        schemaVersion 2
+        // 设置生成数据库文件的目录，默认是在build中，可以将生成的文件放到我们的java目录中
+        targetGenDir 'src/main/java'
+        // 设置生成的数据库相关文件的包名，默认为entity所在的包名
+        daoPackage 'com.hs.uav.greendao.gen'
+    }
+
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName  ="D.NEST" + ".V" + defaultConfig.versionName +"."+new Date().format("yyyy.MM.dd") + "." + buildType.name + ".apk"
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    api files('libs/AMap3DMap_7.5.0_AMapNavi_7.5.0_AMapSearch_7.4.0_AMapTrack_1.3.0_AMapLocation_5.1.0_20200723.jar')
+    //support
+    implementation rootProject.ext.support["design"]
+    //下拉刷新,上拉加载
+    implementation 'com.lcodecorex:tkrefreshlayout:1.0.7'
+    //底部tabBar
+    implementation('me.majiajie:pager-bottom-tab-strip:2.2.5') {
+        exclude group: 'com.android.support'
+    }
+    implementation project(':MallCore')
+    //内存泄漏测试
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'com.github.crossoverone:StatusBarUtil:1.3.3'
+    implementation 'com.androidkun:XTabLayout:1.1.3'
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
+    implementation 'com.squareup:otto:1.3.8'
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+    implementation 'com.squareup.retrofit2:converter-scalars:2.0.0'
+    implementation 'org.greenrobot:greendao:3.2.2'
+    implementation 'com.tencent.bugly:crashreport_upgrade:latest.release'
+    implementation 'com.tencent.bugly:nativecrashreport:latest.release'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta3'
+    api("com.aliyun.dpa:oss-android-sdk:+") {
+        exclude module: 'okhttp'
+        exclude module: 'okio'
+    }
+    //mqtt support
+    api 'org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.2.0'
+    api 'org.eclipse.paho:org.eclipse.paho.android.service:1.1.1'
+    implementation 'com.google.zxing:core:3.3.2'
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.6.2'
+    debugImplementation 'com.squareup.leakcanary:leakcanary-support-fragment:1.6.2'
+}
